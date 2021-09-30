@@ -4,7 +4,6 @@ import 'package:flutter/rendering.dart';
 import 'package:new_gradient_app_bar/new_gradient_app_bar.dart';
 import 'dart:ui';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
-import 'package:simple_shadow/simple_shadow.dart';
 import 'new_piece_view.dart';
 
 void main() {
@@ -87,16 +86,12 @@ class _MyHomePageState extends State<MyHomePage> {
       body: const Center(),
       floatingActionButton: MaterialButton(
         shape: const CircleBorder(),
-        child: SimpleShadow(
-            child: const Image(
-              image: AssetImage('images/new_peace_sign.png'),
-              height: 77,
-              width: 77,
-              color: Colors.black,
-            ),
-            opacity: 0.5,
-            color: Colors.black54,
-            offset: const Offset(4, 4)),
+        child: const Image(
+          image: AssetImage('images/new_peace_sign.png'),
+          height: 77,
+          width: 77,
+          color: Colors.black,
+        ),
         onPressed: () {
           showCupertinoModalBottomSheet(
             context: context,
