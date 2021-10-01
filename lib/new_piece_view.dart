@@ -17,97 +17,98 @@ class _NewPieceViewState extends State<NewPieceView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(top: 15.0),
-              child: SimpleShadow(
-                child: Image(
-                  image: const AssetImage('images/colorpiece.jpg'),
-                  color: selectedColor,
-                  height: window.physicalSize.height * 0.08,
-                ),
-                opacity: 0.5,
-                color: Colors.black,
-                offset: const Offset(4, 4),
+      body: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.only(top: 15.0),
+            child: SimpleShadow(
+              child: Image(
+                image: const AssetImage('images/colorpiece.jpg'),
+                color: selectedColor,
+                height: window.physicalSize.height * 0.08,
               ),
+              opacity: 0.5,
+              color: Colors.black,
+              offset: const Offset(4, 4),
             ),
-            Padding(
-              padding: const EdgeInsets.all(15.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  SimpleShadow(
-                      child: const Text(
-                        'Howdy?',
-                        style: TextStyle(
-                          fontSize: 21.0,
-                          fontWeight: FontWeight.w500,
-                          fontStyle: FontStyle.italic,
-                        ),
-                      ),
-                      opacity: 0.5,
-                      color: Colors.black,
-                      offset: const Offset(1, 1)),
-                  const SizedBox(width: 18.0),
-                  SimpleShadow(
-                    child: ColorButton(
-                        color: selectedColor,
-                        darkMode: false,
-                        boxShape: BoxShape.circle,
-                        size: 35,
-                        config: const ColorPickerConfig(
-                          enableOpacity: false,
-                          enableLibrary: true,
-                        ),
-                        onColorChanged: (value) {
-                          setState(() {
-                            selectedColor = value;
-                          });
-                        }),
-                    opacity: 0.3,
-                    color: Colors.black87,
-                    offset: const Offset(1, 1),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(15.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                SimpleShadow(
+                  child: const Text(
+                    'Howdy?',
+                    style: TextStyle(
+                      fontSize: 21.0,
+                      fontFamily: "KleeOne",
+                    ),
                   ),
-                ],
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(25.0),
-              child: TextField(
-                style: const TextStyle(
-                  fontSize: 16,
-                  fontFamily: "KleeOne",
+                  opacity: 0.5,
                   color: Colors.black,
+                  offset: const Offset(1, 1),
                 ),
-                decoration: InputDecoration(
-                  hintText: ('STORY'),
-                  hintStyle: const TextStyle(fontSize: 20),
-                  filled: true,
-                  fillColor: Colors.grey.shade200,
-                  border: OutlineInputBorder(
-                    borderSide: BorderSide.none,
-                    borderRadius: BorderRadius.circular(15.0),
-                  ),
+                const SizedBox(width: 18.0),
+                SimpleShadow(
+                  child: ColorButton(
+                      color: selectedColor,
+                      darkMode: false,
+                      boxShape: BoxShape.circle,
+                      size: 35,
+                      config: const ColorPickerConfig(
+                        enableOpacity: false,
+                        enableLibrary: true,
+                      ),
+                      onColorChanged: (value) {
+                        setState(() {
+                          selectedColor = value;
+                        });
+                      }),
+                  opacity: 0.3,
+                  color: Colors.black87,
+                  offset: const Offset(1, 1),
                 ),
-                maxLines: 10,
-              ),
+              ],
             ),
-          ],
-        ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(25.0),
+            child: TextField(
+              style: const TextStyle(
+                fontSize: 16,
+                fontFamily: "KleeOne",
+                color: Colors.black,
+              ),
+              decoration: InputDecoration(
+                hintText: ('STORY'),
+                hintStyle: const TextStyle(fontSize: 20),
+                filled: true,
+                fillColor: Colors.grey.shade200,
+                border: OutlineInputBorder(
+                  borderSide: BorderSide.none,
+                  borderRadius: BorderRadius.circular(15.0),
+                ),
+              ),
+              maxLines: 10,
+            ),
+          ),
+        ],
       ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      floatingActionButton: MaterialButton(
-        shape: const CircleBorder(),
-        child: const Image(
-          image: AssetImage('images/new_peace_sign.png'),
-          color: Colors.black,
-          width: 80,
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      floatingActionButton: SimpleShadow(
+        opacity: 0.4,
+        color: Colors.black,
+        offset: const Offset(2, 2),
+        child: IconButton(
+          icon: const Icon(Icons.all_inclusive_rounded),
+          iconSize: 70,
+          color: selectedColor,
+          hoverColor: selectedColor,
+          onPressed: () {
+            Navigator.pop(context);
+          },
         ),
-        onPressed: () {
-          Navigator.pop(context);
-        },
       ),
       //ColorPicker
       //DiaryText

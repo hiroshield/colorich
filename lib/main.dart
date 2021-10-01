@@ -5,6 +5,7 @@ import 'package:new_gradient_app_bar/new_gradient_app_bar.dart';
 import 'dart:ui';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import 'new_piece_view.dart';
+import 'package:simple_shadow/simple_shadow.dart';
 
 void main() {
   runApp(const MyApp());
@@ -40,12 +41,13 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: NewGradientAppBar(
         centerTitle: false,
         title: Padding(
-          padding: const EdgeInsets.all(8.0),
+          padding: const EdgeInsets.only(left: 7.0, bottom: 1.0, right: 7.0),
           child: Text(
             widget.title,
             style: const TextStyle(
               fontSize: 36.0,
-              fontWeight: FontWeight.bold,
+              fontFamily: "KleeOne",
+              fontWeight: FontWeight.w600,
             ),
           ),
         ),
@@ -87,14 +89,21 @@ class _MyHomePageState extends State<MyHomePage> {
       body: const Center(),
       floatingActionButton: MaterialButton(
         shape: const CircleBorder(),
-        child: const Image(
-          image: AssetImage('images/popup.png'),
-          height: 77,
-          width: 77,
+        child: SimpleShadow(
+          opacity: 0.3,
           color: Colors.black,
+          offset: const Offset(0, 6.5),
+          child: const Image(
+            image: AssetImage('images/ccc.png'),
+            height: 77,
+            width: 77,
+          ),
         ),
         onPressed: () {
           showCupertinoModalBottomSheet(
+            barrierColor: const Color.fromARGB(100, 0, 0, 0),
+            topRadius: const Radius.circular(33),
+            duration: const Duration(milliseconds: 400),
             context: context,
             builder: (context) {
               return const NewPieceView();

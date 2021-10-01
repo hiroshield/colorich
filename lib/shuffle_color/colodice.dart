@@ -22,11 +22,12 @@ class _ColoDiceState extends State<ColoDice> {
         centerTitle: false,
         actions: const [
           Padding(
-            padding: EdgeInsets.only(right: 25, top: 10),
+            padding: EdgeInsets.only(right: 25, top: 4),
             child: Text(
               'ColoDice',
               style: TextStyle(
                 fontSize: 36.0,
+                fontFamily: "KleeOne",
                 fontWeight: FontWeight.bold,
               ),
             ),
@@ -82,7 +83,7 @@ class _ColoDiceState extends State<ColoDice> {
                 Text(
                   'Red: ${dice.hexRGB[dice.ranHR]}',
                   style: const TextStyle(
-                    fontSize: 23.0,
+                    fontSize: 21.0,
                     fontWeight: FontWeight.w700,
                     color: Colors.red,
                   ),
@@ -93,7 +94,7 @@ class _ColoDiceState extends State<ColoDice> {
                 Text(
                   'Green: ${dice.hexRGB[dice.ranHG]}',
                   style: const TextStyle(
-                    fontSize: 23.0,
+                    fontSize: 21.0,
                     fontWeight: FontWeight.w700,
                     color: Colors.green,
                   ),
@@ -104,7 +105,7 @@ class _ColoDiceState extends State<ColoDice> {
                 Text(
                   'Blue: ${dice.hexRGB[dice.ranHB]}',
                   style: const TextStyle(
-                    fontSize: 23.0,
+                    fontSize: 21.0,
                     fontWeight: FontWeight.w700,
                     color: Colors.blue,
                   ),
@@ -130,7 +131,6 @@ class _ColoDiceState extends State<ColoDice> {
                 text:
                     '#${dice.copiedHEX[dice.ranHR]}${dice.copiedHEX[dice.ranHG]}${dice.copiedHEX[dice.ranHB]}');
 
-            const snackBar = SnackBar(content: Text('Copied to Clipboard'));
             Clipboard.setData(data);
             showDialog(
               context: context,
