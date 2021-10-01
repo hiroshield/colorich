@@ -88,7 +88,7 @@ class _MyHomePageState extends State<MyHomePage> {
       floatingActionButton: MaterialButton(
         shape: const CircleBorder(),
         child: const Image(
-          image: AssetImage('images/popup.jpg'),
+          image: AssetImage('images/popup.png'),
           height: 77,
           width: 77,
           color: Colors.black,
