@@ -73,6 +73,27 @@ class _NewPieceViewState extends State<NewPieceView> {
                 ],
               ),
             ),
+            Padding(
+              padding: const EdgeInsets.all(25.0),
+              child: TextField(
+                style: const TextStyle(
+                  fontSize: 16,
+                  fontFamily: "KleeOne",
+                  color: Colors.black,
+                ),
+                decoration: InputDecoration(
+                  hintText: ('STORY'),
+                  hintStyle: const TextStyle(fontSize: 20),
+                  filled: true,
+                  fillColor: Colors.grey.shade200,
+                  border: OutlineInputBorder(
+                    borderSide: BorderSide.none,
+                    borderRadius: BorderRadius.circular(15.0),
+                  ),
+                ),
+                maxLines: 10,
+              ),
+            ),
           ],
         ),
       ),

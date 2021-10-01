@@ -21,6 +21,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       home: const MyHomePage(title: 'ColoRich'),
+      debugShowCheckedModeBanner: false,
     );
   }
 }
@@ -87,7 +88,7 @@ class _MyHomePageState extends State<MyHomePage> {
       floatingActionButton: MaterialButton(
         shape: const CircleBorder(),
         child: const Image(
-          image: AssetImage('images/new_peace_sign.png'),
+          image: AssetImage('images/popup.jpg'),
           height: 77,
           width: 77,
           color: Colors.black,

@@ -36,9 +36,9 @@ flutter:
 
 
   fonts:
-    - family: OpenSans
+    - family: KleeOne
       fonts:
-        - asset: assets/fonts/OpenSans-VariableFont_wdth,wght.ttf
+        - asset: assets/fonts/KleeOne-Regular.ttf
 
 
 
