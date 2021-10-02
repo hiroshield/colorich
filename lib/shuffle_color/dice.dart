@@ -499,7 +499,7 @@ class Dice {
     'EC',
     'ED',
     'EE',
-    'EE',
+    'EF',
     'F0',
     'F1',
     'F2',
