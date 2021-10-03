@@ -129,7 +129,7 @@ class _ColoDiceState extends State<ColoDice> {
           setState(() {
             var data = ClipboardData(
                 text:
-                    '#${dice.copiedHEX[dice.ranHR]}${dice.copiedHEX[dice.ranHG]}${dice.copiedHEX[dice.ranHB]}');
+                    '${dice.copiedHEX[dice.ranHR]}${dice.copiedHEX[dice.ranHG]}${dice.copiedHEX[dice.ranHB]}');
 
             Clipboard.setData(data);
             showDialog(
