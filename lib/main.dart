@@ -42,12 +42,20 @@ class _MyHomePageState extends State<MyHomePage> {
         centerTitle: false,
         title: Padding(
           padding: const EdgeInsets.only(left: 7.0, bottom: 1.0, right: 7.0),
-          child: Text(
-            widget.title,
-            style: const TextStyle(
-              fontSize: 36.0,
-              fontFamily: "KleeOne",
-              fontWeight: FontWeight.w600,
+          child: GestureDetector(
+            // onTap: (){
+            //  １タップで、最新のピースへ移動する
+            // },
+            // onLongPress: () {
+            //  RGB使用割合のViewを左側から表示させる
+            // },
+            child: Text(
+              widget.title,
+              style: const TextStyle(
+                fontSize: 36.0,
+                fontFamily: "KleeOne",
+                fontWeight: FontWeight.w600,
+              ),
             ),
           ),
         ),
@@ -57,7 +65,9 @@ class _MyHomePageState extends State<MyHomePage> {
               padding: EdgeInsets.only(top: 5),
               child: Icon(Icons.search, size: 30),
             ),
-            onPressed: () {},
+            onPressed: () {
+              //右に飛んて、カレンダーを表示して、それぞれをタップしたら、編集画面に飛べる。
+            },
           ),
           IconButton(
             icon: const Padding(
@@ -75,7 +85,10 @@ class _MyHomePageState extends State<MyHomePage> {
               padding: EdgeInsets.only(top: 5, right: 15),
               child: Icon(Icons.settings_rounded, size: 30),
             ),
-            onPressed: () {},
+            onPressed: () {
+              //右に飛んで、設定画面に飛ぶ。
+              //バックアップ、意見メール、アプリ評価、インスタ、アプリ情報、著作権、メッセ
+            },
           ),
         ],
         gradient: const LinearGradient(
@@ -95,8 +108,8 @@ class _MyHomePageState extends State<MyHomePage> {
           offset: const Offset(0, 6.5),
           child: const Image(
             image: AssetImage('images/ccc.png'),
-            height: 77,
-            width: 77,
+            height: 80,
+            width: 80,
           ),
         ),
         onPressed: () {
@@ -110,11 +123,8 @@ class _MyHomePageState extends State<MyHomePage> {
             },
           );
         },
-        onLongPress: () {
-          //RGB使用割合のViewを左側から表示させる
-        },
       ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
   }
 }
