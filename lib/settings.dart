@@ -16,7 +16,8 @@ class Settings extends StatefulWidget {
 
 class _SettingsState extends State<Settings> {
   bool backup = false;
-  final urlApp = 'https://apps.apple.com';
+  final urlApp = 'https://apps.apple.com/jp/app/minimaru/id1577885243';
+  //URLを後で変える
   final urlIns = 'https://www.instagram.com/hiroshu_diary';
 
   Future<void> _launchURL(openURL) async {
@@ -28,13 +29,7 @@ class _SettingsState extends State<Settings> {
     }
   }
 
-  void _openMailApp() async {
-    final title = Uri.encodeComponent('');
-    final body = Uri.encodeComponent('');
-    const mailAddress = 'hiroshu.diary@mail.com';
-
-    return _launchURL("mailto:$mailAddress?subject=$title&body=$body");
-  }
+  final mailAddress = 'hiroshu.diary@mail.com';
 
   @override
   Widget build(BuildContext context) {
@@ -90,7 +85,9 @@ class _SettingsState extends State<Settings> {
             titleTextStyle: const TextStyle(fontSize: 20),
             tiles: [
               SettingsTile(
-                onPressed: (BuildContext context) => _openMailApp,
+                onPressed: (BuildContext context) {
+                  launch('mailto:$mailAddress?subject=&body=');
+                },
                 title: 'Message',
                 titleTextStyle: const TextStyle(fontSize: 18),
                 leading: const Icon(Icons.mail_outline_outlined, size: 30),
