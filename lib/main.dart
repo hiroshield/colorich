@@ -6,6 +6,7 @@ import 'dart:ui';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import 'new_piece_view.dart';
 import 'package:simple_shadow/simple_shadow.dart';
+import 'settings.dart';
 
 void main() {
   runApp(const MyApp());
@@ -86,6 +87,9 @@ class _MyHomePageState extends State<MyHomePage> {
               child: Icon(Icons.settings_rounded, size: 30),
             ),
             onPressed: () {
+              Navigator.push(context, MaterialPageRoute(builder: (context) {
+                return const Settings();
+              }));
               //右に飛んで、設定画面に飛ぶ。
               //バックアップ、意見メール、アプリ評価、インスタ、アプリ情報、著作権、メッセ
             },

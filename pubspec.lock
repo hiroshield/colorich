@@ -109,6 +109,13 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  font_awesome_flutter:
+    dependency: "direct main"
+    description:
+      name: font_awesome_flutter
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "9.1.0"
   image:
     dependency: transitive
     description:
@@ -172,6 +179,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "3.0.1"
+  settings_ui:
+    dependency: "direct main"
+    description:
+      name: settings_ui
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.0"
   simple_shadow:
     dependency: "direct main"
     description:

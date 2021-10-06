@@ -58,7 +58,7 @@ class _NewPieceViewState extends State<NewPieceView> {
                         darkMode: false,
                         boxShape: BoxShape.circle,
                         size: 35,
-                        config: const ColorPickerConfig(),
+                        config: const ColorPickerConfig(enableOpacity: false),
                         onColorChanged: (value) {
                           setState(() {
                             selectedColor = value;
