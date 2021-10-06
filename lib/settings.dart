@@ -3,6 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:settings_ui/settings_ui.dart';
 import 'package:new_gradient_app_bar/new_gradient_app_bar.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:url_launcher/url_launcher.dart';
+import 'dart:ui';
+import 'package:flutter/rendering.dart';
 
 class Settings extends StatefulWidget {
   const Settings({Key? key}) : super(key: key);
@@ -13,6 +16,26 @@ class Settings extends StatefulWidget {
 
 class _SettingsState extends State<Settings> {
   bool backup = false;
+  final urlApp = 'https://apps.apple.com';
+  final urlIns = 'https://www.instagram.com/hiroshu_diary';
+
+  Future<void> _launchURL(openURL) async {
+    var url = openURL;
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      throw 'Unable to launch url $url';
+    }
+  }
+
+  void _openMailApp() async {
+    final title = Uri.encodeComponent('');
+    final body = Uri.encodeComponent('');
+    const mailAddress = 'hiroshu.diary@mail.com';
+
+    return _launchURL("mailto:$mailAddress?subject=$title&body=$body");
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -64,33 +87,32 @@ class _SettingsState extends State<Settings> {
           //AndroidでのGoogle One 同期はこの中に書く
           SettingsSection(
             title: 'ACTIONS',
-            titleTextStyle: const TextStyle(
-              fontSize: 20,
-            ),
-            tiles: const [
+            titleTextStyle: const TextStyle(fontSize: 20),
+            tiles: [
               SettingsTile(
+                onPressed: (BuildContext context) => _openMailApp,
                 title: 'Message',
-                titleTextStyle: TextStyle(fontSize: 18),
-                leading: Icon(Icons.mail_outline_outlined, size: 30),
+                titleTextStyle: const TextStyle(fontSize: 18),
+                leading: const Icon(Icons.mail_outline_outlined, size: 30),
               ),
               SettingsTile(
+                onPressed: (BuildContext context) => _launchURL(urlApp),
                 title: 'Review',
-                titleTextStyle: TextStyle(fontSize: 18),
-                leading: Icon(FontAwesomeIcons.appStore, size: 30),
+                titleTextStyle: const TextStyle(fontSize: 18),
+                leading: const Icon(FontAwesomeIcons.appStore, size: 30),
               ),
               //Androidの場合は、GooglePlayへ遷移
               SettingsTile(
+                onPressed: (BuildContext context) => _launchURL(urlIns),
                 title: 'Instagram',
-                titleTextStyle: TextStyle(fontSize: 18),
-                leading: Icon(FontAwesomeIcons.instagram, size: 30),
+                titleTextStyle: const TextStyle(fontSize: 18),
+                leading: const Icon(FontAwesomeIcons.instagram, size: 30),
               ),
             ],
           ),
           SettingsSection(
             title: 'INFORMATION',
-            titleTextStyle: const TextStyle(
-              fontSize: 20,
-            ),
+            titleTextStyle: const TextStyle(fontSize: 20),
             tiles: const [
               SettingsTile(
                 title: 'Version 1.0.0',
