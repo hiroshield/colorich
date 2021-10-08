@@ -7,7 +7,6 @@ import 'package:url_launcher/url_launcher.dart';
 import 'dart:ui';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
-import 'package:timezone/timezone.dart' as tz;
 
 class Settings extends StatefulWidget {
   const Settings({Key? key}) : super(key: key);
@@ -27,7 +26,7 @@ class _SettingsState extends State<Settings> {
     final flnp = FlutterLocalNotificationsPlugin();
     return flnp
         .initialize(
-          InitializationSettings(
+          const InitializationSettings(
             iOS: IOSInitializationSettings(),
           ),
         )
@@ -37,7 +36,7 @@ class _SettingsState extends State<Settings> {
             '',
             'Be ColoRich！',
             Time(_time.hour, _time.minute),
-            NotificationDetails(
+            const NotificationDetails(
               iOS: IOSNotificationDetails(),
             ),
           ),
@@ -54,7 +53,7 @@ class _SettingsState extends State<Settings> {
   }
 
   final mailAddress = 'hiroshu.diary@mail.com';
-  TimeOfDay _time = TimeOfDay(hour: 21, minute: 00);
+  TimeOfDay _time = const TimeOfDay(hour: 21, minute: 00);
 
   void _selectTime() async {
     final TimeOfDay? newTime = await showTimePicker(
@@ -126,14 +125,17 @@ class _SettingsState extends State<Settings> {
                 ),
                 switchValue: notification,
                 onToggle: (bool value) {
-                  setState(() {
-                    if (notification == false) {
-                      notify();
-                      notification = true;
-                    } else {
-                      notification = false;
-                    }
-                  });
+                  setState(
+                    () {
+                      if (notification == false) {
+                        notification = true;
+                        notify();
+                      } else {
+                        notification = false;
+                        FlutterLocalNotificationsPlugin().cancelAll();
+                      }
+                    },
+                  );
                 },
               ),
               SettingsTile(
@@ -144,7 +146,13 @@ class _SettingsState extends State<Settings> {
                   size: 30,
                 ),
                 trailing: GestureDetector(
-                  onTap: _selectTime,
+                  onTap: () {
+                    _selectTime();
+                    if (notification == true) {
+                      FlutterLocalNotificationsPlugin().cancelAll();
+                      notify();
+                    }
+                  },
                   child: Padding(
                     padding: const EdgeInsets.only(right: 8.0),
                     child: Text(
