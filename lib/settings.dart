@@ -16,6 +16,7 @@ class Settings extends StatefulWidget {
 
 class _SettingsState extends State<Settings> {
   bool backup = false;
+  bool notification = false;
   final urlApp = 'https://apps.apple.com/jp/app/minimaru/id1577885243';
   //URLを後で変える
   final urlIns = 'https://www.instagram.com/hiroshu_diary';
@@ -30,6 +31,20 @@ class _SettingsState extends State<Settings> {
   }
 
   final mailAddress = 'hiroshu.diary@mail.com';
+  TimeOfDay _time = const TimeOfDay(hour: 21, minute: 00);
+
+  void _selectTime() async {
+    final TimeOfDay? newTime = await showTimePicker(
+      context: context,
+      initialTime: _time,
+      initialEntryMode: TimePickerEntryMode.input,
+    );
+    if (newTime != null) {
+      setState(() {
+        _time = newTime;
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -76,6 +91,46 @@ class _SettingsState extends State<Settings> {
                     }
                   });
                 },
+              ),
+              SettingsTile.switchTile(
+                title: 'Notification',
+                titleTextStyle: const TextStyle(fontSize: 18),
+                leading: Icon(
+                  notification == false
+                      ? Icons.alarm_off_outlined
+                      : Icons.alarm_on_outlined,
+                  size: 30,
+                ),
+                switchValue: notification,
+                onToggle: (bool value) {
+                  setState(() {
+                    if (notification == false) {
+                      notification = true;
+                    } else {
+                      notification = false;
+                    }
+                  });
+                },
+              ),
+              SettingsTile(
+                title: 'Time',
+                titleTextStyle: const TextStyle(fontSize: 18),
+                leading: const Icon(
+                  Icons.watch_later_outlined,
+                  size: 30,
+                ),
+                trailing: GestureDetector(
+                  onTap: _selectTime,
+                  child: Padding(
+                    padding: const EdgeInsets.only(right: 8.0),
+                    child: Text(
+                      ' ${_time.format(context)}',
+                      style: const TextStyle(
+                        fontSize: 18,
+                      ),
+                    ),
+                  ),
+                ),
               ),
             ],
           ),
