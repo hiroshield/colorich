@@ -66,6 +66,11 @@ class _SettingsState extends State<Settings> {
         _time = newTime;
       });
     }
+    FlutterLocalNotificationsPlugin().cancelAll();
+
+    if (notification == true) {
+      notify();
+    }
   }
 
   @override
