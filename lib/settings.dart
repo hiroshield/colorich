@@ -6,6 +6,8 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'dart:ui';
 import 'package:flutter/rendering.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:timezone/timezone.dart' as tz;
 
 class Settings extends StatefulWidget {
   const Settings({Key? key}) : super(key: key);
@@ -21,6 +23,27 @@ class _SettingsState extends State<Settings> {
   //URLを後で変える
   final urlIns = 'https://www.instagram.com/hiroshu_diary';
 
+  Future<void> notify() {
+    final flnp = FlutterLocalNotificationsPlugin();
+    return flnp
+        .initialize(
+          InitializationSettings(
+            iOS: IOSInitializationSettings(),
+          ),
+        )
+        .then(
+          (_) => flnp.showDailyAtTime(
+            0,
+            '',
+            'Be ColoRich！',
+            Time(_time.hour, _time.minute),
+            NotificationDetails(
+              iOS: IOSNotificationDetails(),
+            ),
+          ),
+        );
+  }
+
   Future<void> _launchURL(openURL) async {
     var url = openURL;
     if (await canLaunch(url)) {
@@ -31,13 +54,13 @@ class _SettingsState extends State<Settings> {
   }
 
   final mailAddress = 'hiroshu.diary@mail.com';
-  TimeOfDay _time = const TimeOfDay(hour: 21, minute: 00);
+  TimeOfDay _time = TimeOfDay(hour: 21, minute: 00);
 
   void _selectTime() async {
     final TimeOfDay? newTime = await showTimePicker(
       context: context,
       initialTime: _time,
-      initialEntryMode: TimePickerEntryMode.input,
+      // initialEntryMode: TimePickerEntryMode.input,
     );
     if (newTime != null) {
       setState(() {
@@ -105,6 +128,7 @@ class _SettingsState extends State<Settings> {
                 onToggle: (bool value) {
                   setState(() {
                     if (notification == false) {
+                      notify();
                       notification = true;
                     } else {
                       notification = false;
