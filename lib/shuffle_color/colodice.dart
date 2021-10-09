@@ -19,25 +19,18 @@ class _ColoDiceState extends State<ColoDice> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: NewGradientAppBar(
-        centerTitle: false,
-        actions: const [
-          Padding(
-            padding: EdgeInsets.only(right: 25, top: 4),
-            child: Text(
-              'ColoDice',
-              style: TextStyle(
-                fontSize: 36.0,
-                fontFamily: "KleeOne",
-                fontWeight: FontWeight.bold,
-              ),
-            ),
+        title: const Text(
+          'ColoDice',
+          style: TextStyle(
+            fontSize: 30.0,
+            fontFamily: "KleeOne",
+            fontWeight: FontWeight.w600,
           ),
-        ],
+        ),
         gradient: const LinearGradient(
           colors: [
-            Colors.cyanAccent,
-            Colors.pinkAccent,
-            Colors.yellowAccent,
+            Colors.greenAccent,
+            Colors.lightGreen,
           ],
         ),
       ),
