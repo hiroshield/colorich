@@ -7,6 +7,7 @@ import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import 'new_piece_view.dart';
 import 'package:simple_shadow/simple_shadow.dart';
 import 'settings.dart';
+import 'color_piece.dart';
 
 void main() {
   runApp(const MyApp());
@@ -36,6 +37,8 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  Onepiece onepiece = Onepiece(Colors.cyan);
+  List puzzuleList = [];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -103,17 +106,58 @@ class _MyHomePageState extends State<MyHomePage> {
           ],
         ),
       ),
-      body: const Center(),
+      bottomNavigationBar: const BottomAppBar(
+        color: Colors.white,
+        child: Padding(
+          padding: EdgeInsets.all(25),
+          child: SizedBox(
+            width: 0,
+          ),
+        ),
+      ),
+      body: GridView.count(
+        crossAxisCount: 3,
+        crossAxisSpacing: 0,
+        children: [
+          onepiece,
+          onepiece,
+          onepiece,
+          onepiece,
+          onepiece,
+          onepiece,
+          onepiece,
+          onepiece,
+          onepiece,
+          onepiece,
+          onepiece,
+          onepiece,
+          onepiece,
+          onepiece,
+          onepiece,
+          onepiece,
+          onepiece,
+          onepiece,
+          onepiece,
+          onepiece,
+          onepiece,
+          onepiece,
+          onepiece,
+        ],
+      ),
       floatingActionButton: MaterialButton(
         shape: const CircleBorder(),
-        child: SimpleShadow(
-          opacity: 0.3,
-          color: Colors.black,
-          offset: const Offset(0, 6.5),
-          child: const Image(
-            image: AssetImage('images/ccc.png'),
-            height: 80,
-            width: 80,
+        child: CircleAvatar(
+          radius: 44,
+          backgroundColor: Colors.white,
+          child: SimpleShadow(
+            opacity: 0.3,
+            color: Colors.black,
+            offset: const Offset(0, 7),
+            child: const Image(
+              image: AssetImage('images/ccc.png'),
+              height: 88,
+              width: 88,
+            ),
           ),
         ),
         onPressed: () {
@@ -128,7 +172,7 @@ class _MyHomePageState extends State<MyHomePage> {
           );
         },
       ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );
   }
 }
