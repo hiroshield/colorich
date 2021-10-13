@@ -33,12 +33,19 @@ class MyHomePage extends StatefulWidget {
   const MyHomePage({Key? key, required this.title}) : super(key: key);
   final String title;
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  State<MyHomePage> createState() => MyHomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
-  Onepiece onepiece = Onepiece(Colors.cyan);
-  List puzzuleList = [];
+class MyHomePageState extends State<MyHomePage> {
+  final piecewidth = window.physicalSize.width * 0.14;
+  List<Onepiece> puzzuleList = [
+    Onepiece(Colors.black12),
+    Onepiece(Colors.cyan),
+    Onepiece(Colors.blueAccent),
+    Onepiece(Colors.orangeAccent),
+    Onepiece(Colors.cyan),
+    Onepiece(Colors.greenAccent),
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -116,33 +123,8 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
       ),
       body: GridView.count(
+        children: puzzuleList,
         crossAxisCount: 3,
-        crossAxisSpacing: 0,
-        children: [
-          onepiece,
-          onepiece,
-          onepiece,
-          onepiece,
-          onepiece,
-          onepiece,
-          onepiece,
-          onepiece,
-          onepiece,
-          onepiece,
-          onepiece,
-          onepiece,
-          onepiece,
-          onepiece,
-          onepiece,
-          onepiece,
-          onepiece,
-          onepiece,
-          onepiece,
-          onepiece,
-          onepiece,
-          onepiece,
-          onepiece,
-        ],
       ),
       floatingActionButton: MaterialButton(
         shape: const CircleBorder(),
@@ -176,3 +158,53 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 }
+
+// [
+// Positioned(
+// left: 0,
+// width: piecewidth,
+// child: Onepiece(Colors.purple),
+// ),
+// Positioned(
+// left: window.physicalSize.width * 0.092,
+// width: piecewidth,
+// child: Onepiece(Colors.purpleAccent),
+// ),
+// Positioned(
+// left: window.physicalSize.width * 0.185,
+// width: piecewidth,
+// child: Onepiece(Colors.greenAccent),
+// ),
+// Positioned(
+// left: 0,
+// top: piecewidth * 0.66,
+// width: piecewidth,
+// child: Onepiece(Colors.orangeAccent),
+// ),
+// Positioned(
+// left: window.physicalSize.width * 0.092,
+// top: piecewidth * 0.66,
+// width: piecewidth,
+// child: Onepiece(Colors.blueAccent),
+// ),
+// Positioned(
+// left: window.physicalSize.width * 0.185,
+// top: piecewidth * 0.66,
+// width: piecewidth,
+// child: Onepiece(Colors.redAccent),
+// ),
+// ]
+
+/*
+[n行目] top: piecewidth * 0.66(n-1)　　
+商の値でnを振り分ける
+
+[l列目]left: window.physicalSize.width*0.092*(n-1)
+余りの値でlを振り分ける
+
+10→10/3=3余り１
+top: piecewidth*0.66(3-1)
+left:window.physicalSize.width*0.092*(1-1)
+
+
+ */

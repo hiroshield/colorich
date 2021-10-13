@@ -3,6 +3,8 @@ import 'package:flutter/rendering.dart';
 import 'dart:ui';
 import 'package:cyclop/cyclop.dart';
 import 'package:simple_shadow/simple_shadow.dart';
+import 'color_piece.dart';
+import 'main.dart';
 
 class NewPieceView extends StatefulWidget {
   const NewPieceView({Key? key}) : super(key: key);
@@ -27,7 +29,7 @@ class _NewPieceViewState extends State<NewPieceView> {
                 child: Image(
                   image: const AssetImage('images/colorpiece.jpg'),
                   color: selectedColor,
-                  height: window.physicalSize.height * 0.08,
+                  height: window.physicalSize.height * 0.065,
                 ),
                 opacity: 0.5,
                 color: Colors.black,
