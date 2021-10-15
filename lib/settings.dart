@@ -96,7 +96,7 @@ class _SettingsState extends State<Settings> {
         contentPadding: const EdgeInsets.all(9.0),
         sections: [
           SettingsSection(
-            title: 'BACKUP',
+            title: 'BACK',
             titleTextStyle: const TextStyle(
               fontSize: 20,
             ),
