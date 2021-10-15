@@ -10,7 +10,7 @@ class Onepiece extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SimpleShadow(
-      color: selectedColor,
+      color: Colors.black,
       opacity: 0.4,
       offset: const Offset(4, 4),
       child: Image.asset(

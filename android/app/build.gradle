@@ -29,7 +29,7 @@ android {
     compileSdkVersion 31
 
     compileOptions {
-        sourceCompatibility 1.8
+        sourceCompatibility "1.8"
         targetCompatibility 1.8
     }
 
@@ -44,7 +44,7 @@ android {
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
         applicationId "com.hiroshi_tsunezumi.colorich"
-        minSdkVersion 27
+        minSdkVersion 30
         targetSdkVersion 31
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
@@ -65,5 +65,5 @@ flutter {
 }
 
 dependencies {
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.6.0-M1"
+    implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.6.0-RC'
 }

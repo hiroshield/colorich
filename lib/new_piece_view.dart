@@ -24,12 +24,12 @@ class _NewPieceViewState extends State<NewPieceView> {
         child: Column(
           children: [
             Padding(
-              padding: const EdgeInsets.only(top: 15.0),
+              padding: const EdgeInsets.only(top: 20.0),
               child: SimpleShadow(
                 child: Image(
                   image: const AssetImage('images/colorpiece.jpg'),
                   color: selectedColor,
-                  height: window.physicalSize.height * 0.065,
+                  height: window.physicalSize.height * 0.060,
                 ),
                 opacity: 0.5,
                 color: Colors.black,
@@ -118,6 +118,9 @@ class _NewPieceViewState extends State<NewPieceView> {
           hoverColor: selectedColor,
           onPressed: () {
             Navigator.pop(context);
+            setState(() {
+              puzzuleList.add(Onepiece(selectedColor));
+            });
           },
         ),
       ),
