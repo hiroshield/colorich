@@ -119,7 +119,7 @@ class _NewPieceViewState extends State<NewPieceView> {
           onPressed: () {
             Navigator.pop(context);
             setState(() {
-              puzzuleList.add(Onepiece(selectedColor));
+              puzzleList.add(Onepiece(selectedColor));
             });
           },
         ),

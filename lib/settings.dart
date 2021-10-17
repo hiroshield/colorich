@@ -5,6 +5,7 @@ import 'package:new_gradient_app_bar/new_gradient_app_bar.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'dart:ui';
+import 'dart:io';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 
@@ -18,29 +19,57 @@ class Settings extends StatefulWidget {
 class _SettingsState extends State<Settings> {
   bool backup = false;
   bool notification = false;
+  final mailAddress = 'hiroshu.diary@mail.com';
+  TimeOfDay _time = const TimeOfDay(hour: 21, minute: 00);
   final urlApp = 'https://apps.apple.com/jp/app/minimaru/id1577885243';
-  //URLを後で変える
   final urlIns = 'https://www.instagram.com/hiroshu_diary';
 
-  Future<void> notify() {
+  //URLを後で変える
+  Future<void> notify() async {
     final flnp = FlutterLocalNotificationsPlugin();
-    return flnp
-        .initialize(
-          const InitializationSettings(
-            iOS: IOSInitializationSettings(),
-          ),
-        )
-        .then(
-          (_) => flnp.showDailyAtTime(
-            0,
-            '',
-            'Be ColoRich！',
-            Time(_time.hour, _time.minute),
-            const NotificationDetails(
-              iOS: IOSNotificationDetails(),
+    if (Platform.isIOS) {
+      return flnp
+          .initialize(
+            const InitializationSettings(
+              iOS: IOSInitializationSettings(),
             ),
-          ),
-        );
+          )
+          .then(
+            (_) => flnp.showDailyAtTime(
+              0,
+              '',
+              'Be ColoRich！',
+              Time(_time.hour, _time.minute),
+              const NotificationDetails(
+                iOS: IOSNotificationDetails(),
+              ),
+            ),
+          );
+    } else if (Platform.isAndroid) {
+      return flnp
+          .initialize(
+            const InitializationSettings(
+              android: AndroidInitializationSettings('@mipmap/ic_launcher'),
+            ),
+          )
+          .then(
+            (_) => flnp.showDailyAtTime(
+              0,
+              '',
+              'Be ColoRich！',
+              Time(_time.hour, _time.minute),
+              const NotificationDetails(
+                android: AndroidNotificationDetails(
+                  'channel_id',
+                  'channel_name',
+                  // 'channel_description',
+                  importance: Importance.high,
+                  priority: Priority.high,
+                ),
+              ),
+            ),
+          );
+    }
   }
 
   Future<void> _launchURL(openURL) async {
@@ -52,8 +81,13 @@ class _SettingsState extends State<Settings> {
     }
   }
 
-  final mailAddress = 'hiroshu.diary@mail.com';
-  TimeOfDay _time = const TimeOfDay(hour: 21, minute: 00);
+  // _setSettings() async {
+  //   SharedPreferences prefs = await SharedPreferences.getInstance();
+  //   await prefs.setBool('siCloud', backup);
+  //   await prefs.setBool('sNotification', notification);
+  //   await prefs.setInt('timeH', _time.hour);
+  //   await prefs.setInt('timeM', _time.minute);
+  // }
 
   void _selectTime() async {
     final TimeOfDay? newTime = await showTimePicker(
@@ -61,6 +95,7 @@ class _SettingsState extends State<Settings> {
       initialTime: _time,
       // initialEntryMode: TimePickerEntryMode.input,
     );
+
     if (newTime != null) {
       setState(() {
         _time = newTime;
@@ -110,13 +145,15 @@ class _SettingsState extends State<Settings> {
                 ),
                 switchValue: backup,
                 onToggle: (bool value) {
-                  setState(() {
-                    if (backup == false) {
-                      backup = true;
-                    } else {
-                      backup = false;
-                    }
-                  });
+                  setState(
+                    () {
+                      if (backup == false) {
+                        backup = true;
+                      } else {
+                        backup = false;
+                      }
+                    },
+                  );
                 },
               ),
               SettingsTile.switchTile(
