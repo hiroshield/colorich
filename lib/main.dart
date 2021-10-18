@@ -10,6 +10,7 @@ import 'package:simple_shadow/simple_shadow.dart';
 import 'settings.dart';
 import 'color_piece.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:after_layout/after_layout.dart';
 
 void main() {
   runApp(const MyApp());
@@ -40,7 +41,8 @@ class MyHomePage extends StatefulWidget {
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _MyHomePageState extends State<MyHomePage>
+    with AfterLayoutMixin<MyHomePage> {
   final piecewidth = window.physicalSize.width * 0.14;
   final scrollDuration = const Duration(milliseconds: 777);
   final scrollCurves = Curves.easeInOut;
@@ -63,6 +65,12 @@ class _MyHomePageState extends State<MyHomePage> {
       duration: scrollDuration,
       curve: scrollCurves,
     );
+  }
+
+  @override
+  void afterFirstLayout(BuildContext context) {
+    // TODO: implement afterFirstLayout
+    scrollToBottom(Duration(seconds: 1), Curves.linear);
   }
 
   @override
