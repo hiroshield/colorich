@@ -42,8 +42,7 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   final piecewidth = window.physicalSize.width * 0.14;
-  final scrollDuration = 777;
-  final newScrollDuration = 111;
+  final scrollDuration = const Duration(milliseconds: 777);
   final scrollCurves = Curves.easeInOut;
   final newScrollCurves = Curves.easeInOutBack;
   ScrollController scrollController = ScrollController();
@@ -61,7 +60,7 @@ class _MyHomePageState extends State<MyHomePage> {
     final topOffset = scrollController.position.minScrollExtent;
     scrollController.animateTo(
       topOffset,
-      duration: Duration(milliseconds: scrollDuration),
+      duration: scrollDuration,
       curve: scrollCurves,
     );
   }
@@ -69,9 +68,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   void initState() {
     scrollController = ScrollController();
-
     super.initState();
-    //scrollToBottom(const Duration(milliseconds: 0), Curves.decelerate);
   }
 
   @override
@@ -91,7 +88,7 @@ class _MyHomePageState extends State<MyHomePage> {
           child: GestureDetector(
             onTap: () {
               scrollToBottom(
-                Duration(milliseconds: scrollDuration),
+                scrollDuration,
                 scrollCurves,
               );
             },
@@ -180,8 +177,8 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
         // onLongPress: () {},
         //↑左からRGBの円グラフ（RGBPieChart）を出す。
-        onPressed: () {
-          showCupertinoModalBottomSheet(
+        onPressed: () async {
+          await showCupertinoModalBottomSheet(
             barrierColor: const Color.fromARGB(100, 0, 0, 0),
             topRadius: const Radius.circular(33),
             duration: const Duration(milliseconds: 400),
@@ -190,6 +187,7 @@ class _MyHomePageState extends State<MyHomePage> {
               return const NewPieceView();
             },
           );
+          scrollToBottom(scrollDuration, Curves.easeInOut);
         },
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,

@@ -116,7 +116,7 @@ class _NewPieceViewState extends State<NewPieceView> {
           iconSize: 70,
           color: selectedColor,
           hoverColor: selectedColor,
-          onPressed: () {
+          onPressed: () async {
             Navigator.pop(context);
             setState(() {
               puzzleList.add(Onepiece(selectedColor));
