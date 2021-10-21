@@ -24,6 +24,8 @@ dependencies:
   flutter_riverpod: ^1.0.0-dev.11
   scrollable_positioned_list: ^0.2.2
   after_layout: ^1.1.0
+  sqflite: ^2.0.0+4
+  path: ^1.8.0
 
 
 dev_dependencies:

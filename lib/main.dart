@@ -1,4 +1,4 @@
-import 'package:colorich/shuffle_color/colodice.dart';
+import 'package:colorich/y_shuffle_color/colodice.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
@@ -70,7 +70,7 @@ class _MyHomePageState extends State<MyHomePage>
   @override
   void afterFirstLayout(BuildContext context) {
     // TODO: implement afterFirstLayout
-    scrollToBottom(Duration(seconds: 1), Curves.linear);
+    scrollToBottom(const Duration(seconds: 1), Curves.linear);
   }
 
   @override
@@ -157,16 +157,18 @@ class _MyHomePageState extends State<MyHomePage>
         ),
       ),
       body: Padding(
-        padding:
-            const EdgeInsets.only(top: 10, left: 10, bottom: 100, right: 10),
-        child: GridView.count(
-          // crossAxisSpacing: 10,
-          // mainAxisSpacing: 10,
-          controller: scrollController,
-          crossAxisCount: 3,
-          children: puzzleList,
-        ),
-      ),
+          padding:
+              const EdgeInsets.only(top: 20, left: 0, bottom: 100, right: 0),
+          child: ClipRRect(
+            borderRadius: const BorderRadius.all(Radius.circular(5)),
+            child: GridView.count(
+              // crossAxisSpacing: 10,
+              // mainAxisSpacing: 10,
+              controller: scrollController,
+              crossAxisCount: 3,
+              children: puzzleList,
+            ),
+          )),
       floatingActionButton: MaterialButton(
         shape: const CircleBorder(),
         child: CircleAvatar(
