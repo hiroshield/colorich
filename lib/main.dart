@@ -2,7 +2,7 @@ import 'package:colorich/y_shuffle_color/colodice.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:new_gradient_app_bar/new_gradient_app_bar.dart';
+// import 'package:new_gradient_app_bar/new_gradient_app_bar.dart';
 import 'dart:ui';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import 'new_piece_view.dart';
@@ -215,6 +215,15 @@ List<Onepiece> puzzleList = [
   Onepiece(Colors.lime),
   Onepiece(Colors.purpleAccent),
   Onepiece(Colors.lightBlueAccent),
+  Onepiece(Colors.teal),
+  Onepiece(Colors.cyanAccent),
+  Onepiece(Colors.green),
+  Onepiece(Colors.redAccent),
+  Onepiece(Colors.pinkAccent),
+  Onepiece(Colors.lime),
+  Onepiece(Colors.purpleAccent),
+  Onepiece(Colors.lightBlueAccent),
+  Onepiece(Colors.teal),
   Onepiece(Colors.teal),
   Onepiece(Colors.cyanAccent),
   Onepiece(Colors.green),

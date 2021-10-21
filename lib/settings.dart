@@ -74,11 +74,40 @@ class _SettingsState extends State<Settings> {
 
   Future<void> _launchURL(openURL) async {
     var url = openURL;
-    if (await canLaunch(url)) {
-      await launch(url);
-    } else {
-      throw 'Unable to launch url $url';
+    if (Platform.isIOS) {
+      if (await canLaunch(url)) {
+        await launch(url);
+      } else {
+        throw 'Unable to launch url $url';
+      }
+    } else if (Platform.isAndroid) {
+      if (await canLaunch(url)) {
+        // URLを開く
+        await launch(url);
+      } else {
+        throw 'Could not launch $url';
+      }
     }
+    // else if (Platform.isAndroid) {
+    //   String? encodeQueryParameters(Map<String, String> params) {
+    //     return params.entries
+    //         .map((e) =>
+    //             '${Uri.encodeComponent(e.key)}=${Uri.encodeComponent(e.value)}')
+    //         .join('&');
+    //   }
+    //
+    //   final Uri emailLaunchUri = Uri(
+    //     scheme: 'mailto',
+    //     path: 'smith@example.com',
+    //     query: encodeQueryParameters(<String, String>{
+    //       'subject': 'Example Subject & Symbols are allowed!'
+    //     }),
+    //   );
+    //
+    //   var openURL = emailLaunchUri.toString();
+    //
+    //   launch(openURL);
+    // }
   }
 
   // _setSettings() async {
