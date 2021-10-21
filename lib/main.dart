@@ -23,12 +23,10 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
+      color: Colors.black,
       title: 'ColoRich',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: const MyHomePage(title: 'ColoRich'),
+      home: MyHomePage(title: 'ColoRich'),
       debugShowCheckedModeBanner: false,
     );
   }
@@ -89,7 +87,7 @@ class _MyHomePageState extends State<MyHomePage>
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: NewGradientAppBar(
+      appBar: AppBar(
         centerTitle: false,
         title: Padding(
           padding: const EdgeInsets.only(left: 7.0, bottom: 1.0, right: 7.0),
@@ -148,19 +146,20 @@ class _MyHomePageState extends State<MyHomePage>
             },
           ),
         ],
-        gradient: const LinearGradient(
-          colors: [
-            Colors.redAccent,
-            Colors.greenAccent,
-            Colors.blueAccent,
-          ],
-        ),
+        foregroundColor: Colors.black,
+        backgroundColor: Colors.white,
+        // gradient: const LinearGradient(
+        //   colors: [
+        //     Colors.redAccent,
+        //     Colors.greenAccent,
+        //     Colors.blueAccent,
+        //   ],
+        // ),
       ),
       body: Padding(
-          padding:
-              const EdgeInsets.only(top: 20, left: 0, bottom: 100, right: 0),
+          padding: const EdgeInsets.only(top: 0, left: 0, bottom: 0, right: 0),
           child: ClipRRect(
-            borderRadius: const BorderRadius.all(Radius.circular(5)),
+            borderRadius: const BorderRadius.all(Radius.circular(3)),
             child: GridView.count(
               // crossAxisSpacing: 10,
               // mainAxisSpacing: 10,
@@ -200,15 +199,19 @@ class _MyHomePageState extends State<MyHomePage>
           scrollToBottom(scrollDuration, Curves.easeInOut);
         },
       ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      bottomNavigationBar: const BottomAppBar(
+        color: Colors.white,
+        child: SizedBox(
+          height: 50,
+        ),
+      ),
     );
   }
 }
 
 List<Onepiece> puzzleList = [
   Onepiece(Colors.green),
-  Onepiece(Colors.redAccent),
-  Onepiece(Colors.pinkAccent),
   Onepiece(Colors.lime),
   Onepiece(Colors.purpleAccent),
   Onepiece(Colors.lightBlueAccent),
@@ -221,39 +224,6 @@ List<Onepiece> puzzleList = [
   Onepiece(Colors.purpleAccent),
   Onepiece(Colors.lightBlueAccent),
   Onepiece(Colors.teal),
-  Onepiece(Colors.cyanAccent),
-  Onepiece(Colors.green),
-  Onepiece(Colors.redAccent),
-  Onepiece(Colors.pinkAccent),
-  Onepiece(Colors.lime),
-  Onepiece(Colors.purpleAccent),
-  Onepiece(Colors.lightBlueAccent),
-  Onepiece(Colors.teal),
-  Onepiece(Colors.cyanAccent),
-  Onepiece(Colors.green),
-  Onepiece(Colors.redAccent),
-  Onepiece(Colors.pinkAccent),
-  Onepiece(Colors.lime),
-  Onepiece(Colors.purpleAccent),
-  Onepiece(Colors.lightBlueAccent),
-  Onepiece(Colors.teal),
-  Onepiece(Colors.cyanAccent),
-  Onepiece(Colors.green),
-  Onepiece(Colors.redAccent),
-  Onepiece(Colors.pinkAccent),
-  Onepiece(Colors.lime),
-  Onepiece(Colors.purpleAccent),
-  Onepiece(Colors.lightBlueAccent),
-  Onepiece(Colors.teal),
-  Onepiece(Colors.cyanAccent),
-  Onepiece(Colors.green),
-  Onepiece(Colors.redAccent),
-  Onepiece(Colors.pinkAccent),
-  Onepiece(Colors.lime),
-  Onepiece(Colors.purpleAccent),
-  Onepiece(Colors.lightBlueAccent),
-  Onepiece(Colors.teal),
-  Onepiece(Colors.cyanAccent),
 ];
 /*
 [n行目] top: piecewidth * 0.66(n-1)　　
