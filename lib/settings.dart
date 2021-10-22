@@ -161,15 +161,18 @@ class _SettingsState extends State<Settings> {
         sections: [
           SettingsSection(
             title: 'BACK',
+            titlePadding: const EdgeInsets.only(top: 15, left: 15),
             titleTextStyle: const TextStyle(
               fontSize: 20,
             ),
             tiles: [
               SettingsTile.switchTile(
-                title: 'iCloud',
+                title: 'Google Drive',
                 titleTextStyle: const TextStyle(fontSize: 18),
                 leading: Icon(
-                  backup == false ? Icons.cloud_off : Icons.cloud_done_outlined,
+                  backup == false
+                      ? FontAwesomeIcons.solidTimesCircle
+                      : FontAwesomeIcons.googleDrive,
                   size: 30,
                 ),
                 switchValue: backup,
@@ -240,6 +243,7 @@ class _SettingsState extends State<Settings> {
           //AndroidでのGoogle One 同期はこの中に書く
           SettingsSection(
             title: 'ACTIONS',
+            titlePadding: const EdgeInsets.only(top: 20, left: 15),
             titleTextStyle: const TextStyle(fontSize: 20),
             tiles: [
               SettingsTile(
@@ -254,7 +258,9 @@ class _SettingsState extends State<Settings> {
                 onPressed: (BuildContext context) => _launchURL(urlApp),
                 title: 'Review',
                 titleTextStyle: const TextStyle(fontSize: 18),
-                leading: const Icon(FontAwesomeIcons.appStore, size: 30),
+                leading: Platform.isIOS
+                    ? const Icon(FontAwesomeIcons.appStore, size: 30)
+                    : const Icon(FontAwesomeIcons.googlePlay, size: 30),
               ),
               //Androidの場合は、GooglePlayへ遷移
               SettingsTile(
@@ -267,6 +273,7 @@ class _SettingsState extends State<Settings> {
           ),
           SettingsSection(
             title: 'INFORMATION',
+            titlePadding: const EdgeInsets.only(top: 20, left: 15),
             titleTextStyle: const TextStyle(fontSize: 20),
             tiles: const [
               SettingsTile(

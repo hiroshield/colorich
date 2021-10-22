@@ -112,7 +112,6 @@ class CRModel {
 
   @override
   String toString() {
-    // TODO: implement toString
     return 'ZDataModel{id: $id, time: $time, color: $color, story: $story}';
   }
 }
