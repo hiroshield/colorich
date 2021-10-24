@@ -1,7 +1,6 @@
 import 'package:colorich/main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:simple_shadow/simple_shadow.dart';
 import 'dart:ui';
 
 class Onepiece extends StatelessWidget {

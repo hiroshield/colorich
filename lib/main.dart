@@ -2,21 +2,17 @@ import 'package:colorich/y_shuffle_color/colodice.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-// import 'package:new_gradient_app_bar/new_gradient_app_bar.dart';
 import 'dart:ui';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import 'new_piece_view.dart';
 import 'package:simple_shadow/simple_shadow.dart';
 import 'settings.dart';
 import 'color_piece.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:after_layout/after_layout.dart';
 
 void main() {
   runApp(const MyApp());
 }
-
-final pieceColorProvider = Provider((ref) => 'ColoRich');
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
@@ -26,15 +22,15 @@ class MyApp extends StatelessWidget {
     return const MaterialApp(
       color: Colors.black,
       title: 'ColoRich',
-      home: MyHomePage(title: 'ColoRich'),
+      home: MyHomePage(),
       debugShowCheckedModeBanner: false,
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key? key, required this.title}) : super(key: key);
-  final String title;
+  const MyHomePage({Key? key}) : super(key: key);
+
   @override
   State<MyHomePage> createState() => _MyHomePageState();
 }
@@ -101,9 +97,9 @@ class _MyHomePageState extends State<MyHomePage>
             onLongPress: () {
               scrollToTop();
             },
-            child: Text(
-              widget.title,
-              style: const TextStyle(
+            child: const Text(
+              'ColoRich',
+              style: TextStyle(
                 fontSize: 36.0,
                 fontFamily: "KleeOne",
                 fontWeight: FontWeight.w600,
