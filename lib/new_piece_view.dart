@@ -1,10 +1,10 @@
+import 'package:colorich/time_line.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'dart:ui';
 import 'package:cyclop/cyclop.dart';
 import 'package:simple_shadow/simple_shadow.dart';
 import 'color_piece.dart';
-import 'main.dart';
 
 class NewPieceView extends StatefulWidget {
   const NewPieceView({Key? key}) : super(key: key);
