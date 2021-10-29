@@ -87,36 +87,27 @@ class _SettingsState extends State<Settings> {
       } else {
         throw 'Could not launch $url';
       }
-    }
-    // else if (Platform.isAndroid) {
-    //   String? encodeQueryParameters(Map<String, String> params) {
-    //     return params.entries
-    //         .map((e) =>
-    //             '${Uri.encodeComponent(e.key)}=${Uri.encodeComponent(e.value)}')
-    //         .join('&');
-    //   }
-    //
-    //   final Uri emailLaunchUri = Uri(
-    //     scheme: 'mailto',
-    //     path: 'smith@example.com',
-    //     query: encodeQueryParameters(<String, String>{
-    //       'subject': 'Example Subject & Symbols are allowed!'
-    //     }),
-    //   );
-    //
-    //   var openURL = emailLaunchUri.toString();
-    //
-    //   launch(openURL);
-    // }
-  }
+    } else if (Platform.isAndroid) {
+      String? encodeQueryParameters(Map<String, String> params) {
+        return params.entries
+            .map((e) =>
+                '${Uri.encodeComponent(e.key)}=${Uri.encodeComponent(e.value)}')
+            .join('&');
+      }
 
-  // _setSettings() async {
-  //   SharedPreferences prefs = await SharedPreferences.getInstance();
-  //   await prefs.setBool('siCloud', backup);
-  //   await prefs.setBool('sNotification', notification);
-  //   await prefs.setInt('timeH', _time.hour);
-  //   await prefs.setInt('timeM', _time.minute);
-  // }
+      final Uri emailLaunchUri = Uri(
+        scheme: 'mailto',
+        path: 'smith@example.com',
+        query: encodeQueryParameters(<String, String>{
+          'subject': 'Example Subject & Symbols are allowed!'
+        }),
+      );
+
+      var openURL = emailLaunchUri.toString();
+
+      launch(openURL);
+    }
+  }
 
   void _selectTime() async {
     final TimeOfDay? newTime = await showTimePicker(

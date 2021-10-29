@@ -1,4 +1,4 @@
-import 'package:colorich/time_line.dart';
+import 'package:colorich/view/home/time_line.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'dart:ui';
@@ -76,9 +76,7 @@ class _NewPieceViewState extends State<NewPieceView> {
             Padding(
               padding: const EdgeInsets.all(25.0),
               child: GestureDetector(
-                onDoubleTap: () {
-                  FocusScope.of(context).unfocus();
-                },
+                onDoubleTap: () => FocusScope.of(context).unfocus(),
                 child: TextField(
                   style: const TextStyle(
                     fontSize: 16,

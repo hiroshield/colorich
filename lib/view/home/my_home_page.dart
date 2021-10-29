@@ -1,10 +1,10 @@
 import 'dart:ui';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import 'package:after_layout/after_layout.dart';
-import 'package:colorich/new_piece_view.dart';
-import 'package:colorich/settings.dart';
-import 'package:colorich/time_line.dart';
-import 'package:colorich/shuffle//colodice.dart';
+import 'package:colorich/view/new/new_piece_view.dart';
+import 'package:colorich/view/tool/settings.dart';
+import 'package:colorich/view/home/time_line.dart';
+import 'package:colorich/view/tool/colodice.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:simple_shadow/simple_shadow.dart';

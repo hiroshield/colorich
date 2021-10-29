@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'color_piece.dart';
+import '../new/color_piece.dart';
 
 List<Onepiece> puzzleList = [
   Onepiece(Colors.green),

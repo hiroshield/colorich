@@ -3,7 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:new_gradient_app_bar/new_gradient_app_bar.dart';
-import 'dice.dart';
+import '../../view_model/dice.dart';
 import 'dart:math';
 
 class ColoDice extends StatefulWidget {
@@ -68,9 +68,7 @@ class _ColoDiceState extends State<ColoDice> {
                 ),
               ),
             ),
-            const SizedBox(
-              height: 80.0,
-            ),
+            const SizedBox(height: 80.0),
             Row(
               children: [
                 Text(
@@ -81,9 +79,7 @@ class _ColoDiceState extends State<ColoDice> {
                     color: Colors.red,
                   ),
                 ),
-                const SizedBox(
-                  width: 12.0,
-                ),
+                const SizedBox(width: 12.0),
                 Text(
                   'Green: ${dice.hexRGB[dice.ranHG]}',
                   style: const TextStyle(
@@ -92,9 +88,7 @@ class _ColoDiceState extends State<ColoDice> {
                     color: Colors.green,
                   ),
                 ),
-                const SizedBox(
-                  width: 12.0,
-                ),
+                const SizedBox(width: 12.0),
                 Text(
                   'Blue: ${dice.hexRGB[dice.ranHB]}',
                   style: const TextStyle(
