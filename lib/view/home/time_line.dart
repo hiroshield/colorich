@@ -25,16 +25,3 @@ List<Onepiece> puzzleList = [
   Onepiece(Colors.lightBlueAccent),
   Onepiece(Colors.teal),
 ];
-/*
-[n行目] top: piecewidth * 0.66(n-1)　　
-商の値でnを振り分ける
-
-[l列目]left: window.physicalSize.width*0.092*(n-1)
-余りの値でlを振り分ける
-
-10→10/3=3余り１
-top: piecewidth*0.66(3-1)
-left:window.physicalSize.width*0.092*(1-1)
-
-
- */

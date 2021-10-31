@@ -19,7 +19,7 @@ class Settings extends StatefulWidget {
 }
 
 var box = Hive.box('myBox');
-bool backups = box.get('backup', defaultValue: false);
+//bool backups = box.get('backup', defaultValue: false);
 bool notifications = box.get('notice', defaultValue: false);
 TimeOfDay time = box.get(
   'timers',
@@ -27,7 +27,7 @@ TimeOfDay time = box.get(
 );
 
 class _SettingsState extends State<Settings> {
-  Future putBackup(backup) async => await box.put('backup', backup);
+  //Future putBackup(backup) async => await box.put('backup', backup);
   Future putNotice(notice) async => await box.put('notice', notice);
   Future putTimers(timers) async => await box.put('timers', timers);
 
@@ -152,11 +152,7 @@ class _SettingsState extends State<Settings> {
               ),
             ),
             gradient: const LinearGradient(
-              colors: [
-                Colors.blueAccent,
-                Colors.cyanAccent,
-              ],
-            ),
+                colors: [Colors.blueAccent, Colors.cyanAccent]),
           ),
           body: SettingsList(
             contentPadding: const EdgeInsets.all(9.0),
@@ -166,30 +162,31 @@ class _SettingsState extends State<Settings> {
                 titlePadding: const EdgeInsets.only(top: 15, left: 15),
                 titleTextStyle: const TextStyle(fontSize: 20),
                 tiles: [
-                  SettingsTile.switchTile(
-                    title: 'Google Drive',
-                    titleTextStyle: const TextStyle(fontSize: 18),
-                    leading: Icon(
-                      backups == false
-                          ? FontAwesomeIcons.solidTimesCircle
-                          : FontAwesomeIcons.googleDrive,
-                      size: 30,
-                    ),
-                    switchValue: backups,
-                    onToggle: (bool value) {
-                      setState(
-                        () {
-                          if (backups == false) {
-                            backups = true;
-                            putBackup(true);
-                          } else {
-                            backups = false;
-                            putBackup(false);
-                          }
-                        },
-                      );
-                    },
-                  ),
+                  // SettingsTile.switchTile(
+                  //   title: 'Google Drive',
+                  //   titleTextStyle: const TextStyle(fontSize: 18),
+                  //   leading: Icon(
+                  //     backups == false
+                  //         ? FontAwesomeIcons.solidTimesCircle
+                  //         : FontAwesomeIcons.googleDrive,
+                  //     size: 30,
+                  //   ),
+                  //   switchValue: backups,
+                  //   onToggle: (bool value) {
+                  //     setState(
+                  //       () {
+                  //         if (backups == false) {
+                  //           backups = true;
+                  //           putBackup(true);
+                  //         } else {
+                  //           backups = false;
+                  //           putBackup(false);
+                  //         }
+                  //       },
+                  //     );
+                  //   },
+                  // ),
+                  //GoogleDriveとの連携（バックアップは保留）
                   SettingsTile.switchTile(
                     title: 'Notification',
                     titleTextStyle: const TextStyle(fontSize: 18),

@@ -149,12 +149,8 @@ class _MyHomePageState extends State<MyHomePage>
         },
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      bottomNavigationBar: const BottomAppBar(
-        color: Colors.white,
-        child: SizedBox(
-          height: 50,
-        ),
-      ),
+      bottomNavigationBar:
+          const BottomAppBar(color: Colors.white, child: SizedBox(height: 50)),
     );
   }
 }
